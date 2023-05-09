@@ -1,6 +1,6 @@
 ## 技术栈
 ```
-Laravel Breeze # 生成登录认证套件，参考：https://laravel.com/docs/8.x/starter-kits
+一、Laravel Breeze # 生成登录认证套件，参考：https://laravel.com/docs/8.x/starter-kits
 
 具体步骤：
 1.composer require laravel/breeze:1.9.2     # 安装breeze
@@ -10,7 +10,29 @@ Laravel Breeze # 生成登录认证套件，参考：https://laravel.com/docs/8.
 5.npm run dev
 6.php artisan server
 7.http://127.0.0.1:8000/register # 注册
+
+
+二、如何修改UI?
+1.修改resources/js/Pages下的vue文件即可，后执行npm run dev生效，而npm run watch可以监听修改。
+
+三、Controller中__invoke()使用场景？
+路由设置可以免写控制器方法，如 Route::get('/user', 'UserController');   # 默认调用__invoke()
+
+四、Inertia 渲染页面默认路径
+使用 Inertia 渲染页面时，视图文件的路径通常位于 resources/js/Pages 目录下。
+
+五、加一个middleware
+app/http/kernel.php的$routeMiddleware数组下加：'webapi' => \App\Http\Middleware\WebApi::class,
+
+六、middle的handle函数
+middleware 中注册的中间件是一个对象，其中包含一个 handle 方法，该方法在请求到达中间件时调用。
+
+七、laravel用dump打印
+dd('hah'); # 截断打印
+
+
 ```
+
 
 ## Question
 ```
