@@ -21,18 +21,17 @@ class WebApi
         global $_A;
         $_A = [];
 
-        dd('hah');
-
         if (Request::input('__Access-Control-Allow-Origin') || Request::header('__Access-Control-Allow-Origin')) {
             header('Access-Control-Allow-Origin:*');
             header('Access-Control-Allow-Methods:GET,POST,PUT,DELETE,OPTIONS');
             header('Access-Control-Allow-Headers:Content-Type, platform, platform-channel, token, release, Access-Control-Allow-Origin');
         }
-        dd('hah2');
-        // $APP_SCHEME = env('APP_SCHEME', 'auto');
-        // if (in_array(strtolower($APP_SCHEME), ['https', 'on', 'ssl', '1', 'true', 'yes'], true)) {
-        //     $request->setTrustedProxies([$request->getClientIp()], $request::HEADER_X_FORWARDED_PROTO);
-        // }
+        $APP_SCHEME = env('APP_SCHEME', 'auto');
+        dd(in_array(strtolower($APP_SCHEME), ['https', 'on', 'ssl', '1', 'true', 'yes'], true));
+        
+        if (in_array(strtolower($APP_SCHEME), ['https', 'on', 'ssl', '1', 'true', 'yes'], true)) {
+            $request->setTrustedProxies([$request->getClientIp()], $request::HEADER_X_FORWARDED_PROTO);
+        }
 
         return $next($request);
     }

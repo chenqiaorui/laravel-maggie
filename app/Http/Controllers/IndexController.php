@@ -21,13 +21,13 @@ class IndexController
 {
     public function __invoke($method, $action = '', $child = '')
     {
-        // $app = $method ?: 'main';
-        // if ($action) {
-        //     $app .= "__" . $action;
-        // }
-        // if (!method_exists($this, $app)) {
-        //     $app = method_exists($this, $method) ? $method : 'main';
-        // }
-        return 'test';
+        $app = $method ?: 'main';   
+        if ($action) {
+            $app .= "__" . $action;
+        }
+        if (!method_exists($this, $app)) {
+            $app = method_exists($this, $method) ? $method : 'main';
+        }
+        return $this->$app($child);
     }
 }
