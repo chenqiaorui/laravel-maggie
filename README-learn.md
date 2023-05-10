@@ -49,4 +49,14 @@ Package inertiajs/inertia-laravel at version ^0.5.4 has a PHP requirement incomp
     - inertiajs/inertia-laravel v0.5.4 requires php ^7.2|~8.0.0|~8.1.0 which does not match your installed version 8.2.5.
 
 遇到这种问题一般是依赖需要的php版本不支持，建议试下不同的依赖版本，版本查询网站见https://packagist.org/packages/tightenco/ziggy#v1.5.2
+
+3. requires ext-pcntl * -> the requested PHP extension pcntl is missing from your system.
+
+解决：在composer.json中增加：
+"config": {
+    "platform": {
+        "ext-pcntl": "7.2",
+        "ext-posix": "7.2"
+    }
+},
 ```
