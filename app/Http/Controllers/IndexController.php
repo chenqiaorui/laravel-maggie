@@ -28,6 +28,22 @@ class IndexController
         if (!method_exists($this, $app)) {
             $app = method_exists($this, $method) ? $method : 'main';
         }
-        return $this->$app($child);
+        return $this->$app($child); // 调用main
+    }
+
+    public function main()
+    {
+        $hash = 'no';
+        $path = public_path('js/hash');
+        if (file_exists($path)) {
+            $hash = trim(file_get_contents(public_path('js/hash')));
+            if (strlen($hash) > 16) {
+                $hash = 'long';
+            }
+        }
+        return view('main', [
+            // 'version' => Base::getVersion(),
+            'hash' => $hash
+        ]);
     }
 }

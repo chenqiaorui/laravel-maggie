@@ -13,7 +13,7 @@
 
 
 二、如何修改UI?
-1.修改resources/js/Pages下的vue文件即可，后执行npm run dev生效，而npm run watch可以监听修改。
+1.修改resources/js/Pages下的vue文件即可，后执行npm run dev生效，而npm run watch可以监听修改（npm实际是调用laravel mix）。
 
 三、Controller中__invoke()使用场景？
 路由设置可以免写控制器方法，如 Route::get('/user', 'UserController');   # 默认调用__invoke()
@@ -32,6 +32,8 @@ dd('hah'); # 截断打印
 dd(env('APP_SCHEME')); # 打印env参数
 in_array(A,arr2,true); # 如果A在arr2里面，返回true
 
+八、view方法
+在 Laravel 中，Controller 中的 view() 方法默认情况下会在 resources/views 目录下查找视图文件。
 ```
 
 
