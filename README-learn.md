@@ -32,6 +32,9 @@ dd('hah'); # 截断打印
 dd(env('APP_SCHEME')); # 打印env参数
 in_array(A,arr2,true); # 如果A在arr2里面，返回true
 
+use Illuminate\Support\Facades\Log;
+Log::info('This is an information message.');
+
 八、view方法
 在 Laravel 中，Controller 中的 view() 方法默认情况下会在 resources/views 目录下查找视图文件。
 ```
